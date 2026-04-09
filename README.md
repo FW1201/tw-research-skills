@@ -154,7 +154,7 @@ npx skills add FW1201/tw-research-skills --all -a antigravity
 唯使用或衍生本套組時，請務必遵守以下 Citation 規範：
 
 ```
-吳奇（Kevin Wu）. (2025). tw-research-skills: 學術研究 Claude Skills 套組 [Software].
+吳奇（Kevin Wu）. (2026). tw-research-skills: 學術研究 Claude Skills 套組 [Software].
 數位敘事力期刊. https://github.com/FW1201/tw-research-skills
 ```
 
