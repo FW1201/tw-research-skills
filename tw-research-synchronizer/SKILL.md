@@ -7,13 +7,13 @@ description: >
   當使用者提及「設定研究偏好」「客製化學術工具」「研究者設定」
   「設定我的研究領域」「個人化學術設定」時觸發。
   分類：學術研究（tw-research-*）
-version: 1.0.0
+version: 1.1.0
 author: 奇老師・數位敘事力社群
 allowed-tools: "Bash, Read, Write, Notion"
 disable-model-invocation: true
 ---
 
-# 學術研究套組客製化工具 v1.0
+# 學術研究套組客製化工具 v1.1
 
 ## 核心目的
 「**讓每個 tw-research-* Skill 都了解你的研究情境。**
@@ -31,6 +31,8 @@ disable-model-invocation: true
 - `../tw-research-stat-consultant/SKILL.md`
 - `../tw-research-citation-proofer/SKILL.md`
 - `../tw-research-dialectics/SKILL.md`
+- `../tw-research-hypothesis-generator/SKILL.md`（v2.0 新增）
+- `../tw-research-grant-writer/SKILL.md`（v2.0 新增）
 
 ---
 
@@ -116,6 +118,27 @@ Q14：「你最常遇到的研究困難？（前三名）
 Q15：「有什麼是你希望 AI 特別注意的？（自由填寫）」
 ```
 
+### 新增設定（v1.1）
+```
+Q16：「假說生成取向偏好？
+     A. 演繹取向（從既有理論推導假說）
+     B. 歸納取向（從資料/觀察建立假說）
+     C. 混合（依研究情境而定）
+     D. 尚未確定」
+
+Q17：「研究計畫書目標機構？（若有申請計畫書需求）
+     A. 國科會（NSTC）← 預設
+     B. NSF（美國國家科學基金會）
+     C. NIH（美國國立衛生研究院）
+     D. ERC（歐洲研究委員會）
+     E. 暫無申請計畫書需求」
+
+Q18：「圖表輸出的目標場域？
+     A. 台灣學位論文（中文格式為主）← 預設
+     B. 國際期刊投稿（需色盲友善、向量格式）
+     C. 兩者都需要（依圖表用途切換）」
+```
+
 ---
 
 ## Step 3：生成 researcher-profile.md
@@ -172,6 +195,13 @@ Q15：「有什麼是你希望 AI 特別注意的？（自由填寫）」
 ### tw-research-viz
 - 圖表風格：[學術期刊/論文/研討會簡報]
 - 慣用工具：[Excalidraw/matplotlib/R ggplot]
+- 國際模式：[true/false]（Q18）
+
+### tw-research-hypothesis-generator
+- 假說生成取向：[演繹/歸納/混合]（Q16）
+
+### tw-research-grant-writer
+- 目標機構：[國科會/NSF/NIH/ERC]（Q17）
 ```
 
 ---

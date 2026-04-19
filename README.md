@@ -1,21 +1,24 @@
 # tw-research-skills — 學術研究 Claude Skills 套組
 
 > **臺灣學術研究者 / 碩博生專用 AI 研究輔助套組**  
-> 整合文獻管理、統計分析、引用格式校對、學術辯證，嚴謹對應臺灣學術規範。
+> 整合文獻管理、假說生成、統計分析（EDA / 網絡 / 時間序列）、引用格式校對、學術辯證，嚴謹對應臺灣學術規範，並支援國際期刊投稿模式。
 
-[![Skills](https://img.shields.io/badge/Skills-8-red)](https://github.com/FW1201/tw-research-skills)
-[![Version](https://img.shields.io/badge/Version-1.0-green)](https://github.com/FW1201/tw-research-skills)
+[![Skills](https://img.shields.io/badge/Skills-10-red)](https://github.com/FW1201/tw-research-skills)
+[![Version](https://img.shields.io/badge/Version-2.0-green)](https://github.com/FW1201/tw-research-skills)
 [![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
 ---
 
 ## 📦 套組概覽
 
-本套組包含 **8 個 Skills**，面向臺灣大學研究生、學術研究者，涵蓋：
+本套組包含 **10 個 Skills**，面向臺灣大學研究生、學術研究者，涵蓋：
+- 假說生成與研究方法設計引導（競爭假說框架）
 - 系統性文獻探討（多資料庫搜尋策略）
-- 量化統計分析（Python/R 程式碼生成與執行）
+- 量化統計分析（Python/R 程式碼生成）+ EDA / 網絡分析 / 時間序列
 - APA 7th / MLA 9th / 臺灣學位論文格式引用校對
-- 學術辯證與論點強化（Toulmin 論證模型）
+- 學術辯證 + ScholarEval 8 維度系統評估
+- 國科會 / NSF / NIH 研究計畫書撰寫
+- Publication-quality 圖表（色盲友善、期刊格式 preset）
 
 > **相關套組**：[tw-edu-skills（教師）](https://github.com/FW1201/tw-edu-skills) ｜ [tw-stu-skills（學生）](https://github.com/FW1201/tw-stu-skills)
 
@@ -24,32 +27,34 @@
 ## 🛠 Skills 清單
 
 ### 研究規劃
-| Skill | 功能說明 |
-|-------|---------|
-| `tw-research-proposal-diamond` | 雙菱形研究計畫書：發散式問題探索→聚焦研究設計→國科會計畫格式輸出 |
-| `tw-research-lit-review` | 系統性文獻探討：Boolean 搜尋策略→多資料庫（Web of Science / Scopus / CNKI / NDLTD）→主題聚類→研究缺口識別→綜述草稿 |
+| Skill | 版本 | 功能說明 |
+|-------|------|---------|
+| `tw-research-hypothesis-generator` | v1.0 🆕 | 假說生成：從研究缺口產生 3-5 個競爭假說→品質評估矩陣（可測試性/可偽證性/簡約性）→研究方法設計建議 |
+| `tw-research-proposal-diamond` | v1.0 | 雙菱形研究計畫書：發散式問題探索→聚焦研究設計→國科會計畫格式輸出 |
+| `tw-research-grant-writer` | v1.0 🆕 | 研究計畫書撰寫：國科會五段引導→三位評審視角模擬→引用驗證整合；支援切換 NSF / NIH 國際模式 |
+| `tw-research-lit-review` | v1.0 | 系統性文獻探討：Boolean 搜尋策略→多資料庫（Web of Science / Scopus / CNKI / NDLTD）→主題聚類→研究缺口識別→綜述草稿 |
 
 ### 資料分析
-| Skill | 功能說明 |
-|-------|---------|
-| `tw-research-stat-consultant` | 量化統計顧問：上傳資料→選擇統計方法→執行 Python/R 檢定→效果量報告→學術解讀文字 |
-| `tw-research-viz` | 研究視覺化：數據圖表、概念架構圖、研究流程圖生成 |
+| Skill | 版本 | 功能說明 |
+|-------|------|---------|
+| `tw-research-stat-consultant` | v2.0 ⬆️ | 量化統計顧問：上傳資料→選擇統計方法→Python/R 程式碼→效果量→學術解讀；**新增** EDA 自動分析（ydata-profiling）、網絡分析（networkx）、時間序列分析（statsmodels） |
+| `tw-research-viz` | v2.0 ⬆️ | 研究視覺化：數據圖表、概念架構圖、研究流程圖；**新增** 期刊格式 Preset（台灣論文/APA/Nature）、Okabe-Ito 色盲友善色系、300 DPI 向量輸出標準 |
 
 ### 引用管理
-| Skill | 功能說明 |
-|-------|---------|
-| `tw-research-citation-checker` | 文獻引用查核：確認文獻真實存在（DOI 驗證）、作者/年份/標題比對 |
-| `tw-research-citation-proofer` | 引用格式校對：逐條檢查 APA 7th / MLA 9th / 台灣學位論文格式，列出錯誤並給出正確版本 |
+| Skill | 版本 | 功能說明 |
+|-------|------|---------|
+| `tw-research-citation-checker` | v1.0 | 文獻引用查核：確認文獻真實存在（DOI 驗證）、作者/年份/標題比對 |
+| `tw-research-citation-proofer` | v1.0 | 引用格式校對：逐條檢查 APA 7th / MLA 9th / 台灣學位論文格式，列出錯誤並給出正確版本 |
 
 ### 學術寫作
-| Skill | 功能說明 |
-|-------|---------|
-| `tw-research-dialectics` | 學術內容辯證：輸入論點→AI 提出反駁（四類辯證）→往返辯論→生成正式反駁段落（Toulmin 模型） |
+| Skill | 版本 | 功能說明 |
+|-------|------|---------|
+| `tw-research-dialectics` | v2.0 ⬆️ | 學術辯證（Toulmin 模型）+ **新增評估模式**：ScholarEval 8 維度 × 5 分量表系統評估論文草稿 |
 
 ### 套組設定
-| Skill | 功能說明 |
-|-------|---------|
-| `tw-research-synchronizer` | 個人化套組設定助手，根據研究領域/方法論/目標期刊/指導教授風格客製化所有 tw-research-* Skills |
+| Skill | 版本 | 功能說明 |
+|-------|------|---------|
+| `tw-research-synchronizer` | v1.1 ⬆️ | 個人化套組設定助手；**新增** 假說生成取向、計畫書目標機構、圖表國際模式三項設定 |
 
 ---
 
@@ -75,7 +80,8 @@ npx skills update -a claude-code
 
 > **注意**：`tw-research-stat-consultant` 需要 Claude Code 的 `Bash` 工具執行 Python/R 統計程式碼。請確認 Python 3.8+ 已安裝，並安裝必要套件：
 > ```bash
-> pip install pandas scipy statsmodels numpy matplotlib prince
+> pip install pandas scipy statsmodels numpy matplotlib seaborn prince
+> pip install ydata-profiling networkx pyreadstat  # v2.0 新增：EDA / 網絡分析 / SPSS 格式支援
 > ```
 
 ### Codex CLI
@@ -114,14 +120,17 @@ npx skills add FW1201/tw-research-skills --all -a antigravity
 
 ---
 
-## 📊 tw-research-stat-consultant 支援的統計方法
+## 📊 tw-research-stat-consultant 支援的分析方法（v2.0）
 
 | 類別 | 方法 |
 |------|------|
+| EDA 自動分析 🆕 | ydata-profiling 報告、缺失值矩陣、相關熱圖、異常值偵測 |
 | 差異檢定 | t-test（獨立/相依）、單因子/多因子 ANOVA、Kruskal-Wallis |
 | 相關分析 | Pearson r、Spearman ρ、Kendall τ |
 | 迴歸分析 | 線性迴歸、邏輯迴歸、多層次迴歸 |
 | 多變量 | 主成分分析（PCA）、對應分析（CA）、集群分析 |
+| 網絡分析 🆕 | 引用網路、社會網路、共現分析（networkx + gephi 輸出） |
+| 時間序列 🆕 | 季節性分解、ARIMA、前後測時序比較（statsmodels） |
 | 語料庫 | 頻率統計、關鍵字分析、搭配詞分析（MI 值、t-score） |
 
 ---

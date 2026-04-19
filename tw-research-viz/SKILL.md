@@ -6,15 +6,16 @@ description: >
   或生成可嵌入論文的 SVG/PNG 圖表。
   當使用者提及「研究架構圖」「概念框架」「文獻關係圖」「理論模型」
   「研究流程圖」「資料視覺化」「畫圖」「論文圖表」「研究地圖」
-  「系統性文獻回顧」「SLR 流程」「PRISMA」時觸發。
-  適用情境：碩博士論文、期刊論文、研討會論文、研究計畫書。
-version: 1.0.0
+  「系統性文獻回顧」「SLR 流程」「PRISMA」「期刊投稿圖」
+  「色盲友善」「300 DPI」「向量圖」「Nature 格式」「SSCI 格式」時觸發。
+  適用情境：碩博士論文、期刊論文、研討會論文、研究計畫書、國際期刊投稿。
+version: 2.0.0
 author: 奇老師・數位敘事力社群
 allowed-tools: "Bash, Read, Write, WebSearch"
 disable-model-invocation: true
 ---
 
-# 學術論文資料視覺化工具 v1.0
+# 學術論文資料視覺化工具 v2.0
 
 ## 哲學定位
 「一張好的學術圖表，能讓審稿人在 30 秒內理解你的研究邏輯。」
@@ -66,13 +67,16 @@ Q3: 「圖的最終用途？
     C. 研討會海報
     D. 線上分享 / 可編輯版本」
 
-Q4: 「有沒有特定的學術格式要求？
-    APA 7th / 臺灣學位論文格式 / 期刊特定格式」
+Q4: 「格式 Preset（投稿/提交目標）？
+    A. 臺灣學位論文格式（標楷體、Times New Roman）
+    B. APA 7th 社會科學期刊（SSCI，單欄較寬）
+    C. 國際理工期刊（Nature/Science 雙欄，sans-serif 字體）
+    D. 無特殊要求（使用預設學術格式）」
 
-Q5: 「色彩偏好？
-    A. 黑白（適合列印）
-    B. 有限色彩（2-3 色，正式感）
-    C. 全彩（簡報/海報用）」
+Q5: 「色彩模式？
+    A. 標準學術配色（現有深藍主色系）
+    B. 色盲友善模式（Okabe-Ito 8色系，推薦投稿期刊時使用）
+    C. 黑白灰階（適合單色列印、部分老期刊要求）」
 ```
 
 ### 確認摘要
@@ -201,13 +205,49 @@ Step 3：呼叫 create_view
   Excalidraw:create_view(elements: JSON 陣列字串)
 ```
 
+### 色彩系統（依 Q5 選擇套用）
+
+**A. 標準學術配色（預設）**
+```python
+ACADEMIC_PALETTE = {
+    "primary":    "#1A5276",  # 深藍：主要節點
+    "secondary":  "#2471A3",  # 中藍：次要節點
+    "accent":     "#D4AC0D",  # 金色：強調節點
+    "boundary":   "#1E8449",  # 綠色：邊界節點
+    "background": "#EBF5FB",  # 淺藍：背景
+    "text":       "#1C2A35",  # 深色：文字
+}
+```
+
+**B. Okabe-Ito 色盲友善 8 色系（推薦投稿使用）**
+```python
+OKABE_ITO = [
+    "#E69F00",  # 橙色
+    "#56B4E9",  # 天藍
+    "#009E73",  # 藍綠
+    "#F0E442",  # 黃色
+    "#0072B2",  # 深藍
+    "#D55E00",  # 深橙
+    "#CC79A7",  # 紫粉
+    "#000000",  # 黑色（第8色備用）
+]
+# 適用情境：投稿 Nature/Science/PLOS ONE 等國際期刊時強烈推薦
+# 原理：對三種最常見色盲類型（紅綠色盲、藍黃色盲、全色盲）均可辨識
+```
+
+**C. 灰階模式（單色列印）**
+```python
+GRAYSCALE = ["#000000", "#404040", "#808080", "#B0B0B0", "#D8D8D8", "#FFFFFF"]
+# 使用時搭配不同形狀/線條樣式（實線/虛線/點線）作為主要區分手段
+```
+
 ### 學術圖表元素設計原則
 ```
-顏色系統（學術正式用）：
-  主要節點：#1A5276（深藍）
-  次要節點：#2471A3（中藍）
-  強調節點：#D4AC0D（金色）
-  邊界節點：#1E8449（綠色）
+顏色系統（依上方選擇套用）：
+  主要節點：ACADEMIC_PALETTE["primary"] 或 OKABE_ITO[4]（深藍）
+  次要節點：ACADEMIC_PALETTE["secondary"] 或 OKABE_ITO[1]（天藍）
+  強調節點：ACADEMIC_PALETTE["accent"] 或 OKABE_ITO[0]（橙色）
+  邊界節點：ACADEMIC_PALETTE["boundary"] 或 OKABE_ITO[2]（藍綠）
   背景色：#EBF5FB（淺藍，避免純白）
   文字：#1C2A35（深色）
 
@@ -285,12 +325,140 @@ Conceptual Framework of Teacher AI Competency and Student Learning Outcomes
 
 ---
 
-## Step 7：品質確認清單
+## Step 7：期刊格式 Preset 規範
+
+依 Q4 選擇的格式，套用以下規範：
+
+### A. 臺灣學位論文格式
+```
+字型：
+  中文標題/標注：標楷體 12pt（粗體用於標題）
+  英文/數字：Times New Roman 12pt
+圖表尺寸：單欄全寬（文字區寬度，通常約 14-16 cm）
+解析度：≥ 300 DPI（印刷用）
+格式：PNG 或 PDF（嵌入 Word）
+圖注語言：中英對照，Figure 1 / 圖1
+```
+
+### B. APA 7th 社會科學期刊（SSCI）
+```
+字型：
+  圖表內文字：Sans-serif（如 Arial、Calibri）8-12pt
+  圖注：Times New Roman 12pt（與正文一致）
+圖表尺寸：單欄（8.5 cm）或全寬（17.8 cm）
+解析度：≥ 300 DPI（點陣圖）/ 向量格式優先（EPS/PDF）
+格式：EPS > PDF > TIFF > PNG（JPEG 禁用）
+色彩：強烈建議使用 Okabe-Ito 色盲友善色系
+注意：圖注（caption）在圖的下方，標題僅首字大寫
+```
+
+### C. 國際理工期刊（Nature/Science 系）
+```
+字型：
+  圖表內文字：Helvetica 或 Arial（sans-serif），最小 6pt
+  單欄圖時，字體縮放後仍需 ≥ 6pt（列印版）
+圖表尺寸：
+  單欄：8.9 cm（89 mm）
+  雙欄：18.3 cm（183 mm）
+  最大高度：24.7 cm（247 mm）
+解析度：線條藝術圖 ≥ 1,000 DPI；混合圖 ≥ 600 DPI；照片 ≥ 300 DPI
+格式：PDF（向量）> EPS > TIFF；JPEG 僅限照片
+色彩：CMYK 色彩空間（非 RGB，提交出版時注意）
+       強制使用色盲友善色系（Nature 期刊編輯政策要求）
+```
+
+---
+
+## Step 8：Publication-quality 輸出標準
+
+### Python 高品質圖表匯出模板
+
+```python
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+
+# === 依格式 Preset 設定參數 ===
+
+# --- Preset A：臺灣學位論文 ---
+# plt.rcParams.update({
+#     "figure.dpi": 300,
+#     "savefig.dpi": 300,
+#     "font.family": ["Noto Sans CJK TC", "Times New Roman"],
+#     "font.size": 12,
+#     "axes.labelsize": 12,
+#     "xtick.labelsize": 10,
+#     "ytick.labelsize": 10,
+# })
+
+# --- Preset B：APA 7th / SSCI（推薦） ---
+plt.rcParams.update({
+    "figure.dpi": 300,
+    "savefig.dpi": 300,
+    "font.family": "Arial",
+    "font.size": 10,
+    "axes.labelsize": 10,
+    "axes.spines.top": False,
+    "axes.spines.right": False,
+    "figure.figsize": (8.5 / 2.54, 6 / 2.54),  # 8.5 cm 寬，單位轉換
+})
+
+# --- Preset C：Nature/Science 雙欄 ---
+# plt.rcParams.update({
+#     "figure.dpi": 600,
+#     "savefig.dpi": 600,
+#     "font.family": "Helvetica",
+#     "font.size": 8,
+#     "axes.labelsize": 8,
+#     "xtick.labelsize": 7,
+#     "ytick.labelsize": 7,
+#     "figure.figsize": (18.3 / 2.54, 8 / 2.54),  # 183 mm 寬
+# })
+
+# === 色盲友善色系（Okabe-Ito）===
+OKABE_ITO = ["#E69F00", "#56B4E9", "#009E73", "#F0E442",
+             "#0072B2", "#D55E00", "#CC79A7", "#000000"]
+
+# --- 實際繪圖 ---
+fig, ax = plt.subplots()
+# [在此加入你的繪圖程式碼，使用 OKABE_ITO 作為色彩清單]
+
+# === 匯出（向量優先）===
+fig.tight_layout()
+fig.savefig("figure.pdf", bbox_inches="tight")   # 向量（最優先）
+fig.savefig("figure.svg", bbox_inches="tight")   # 向量（可在 Inkscape 編輯）
+fig.savefig("figure.png", dpi=300, bbox_inches="tight")  # 點陣備份
+print("✅ 圖表已匯出：figure.pdf / figure.svg / figure.png")
+```
+
+### 字型最小值核查
+
+```python
+# 確認圖表縮放至目標尺寸後，文字仍 ≥ 6pt
+def check_font_size(fig, target_width_cm, min_pt=6):
+    current_width_inches = fig.get_figwidth()
+    target_width_inches = target_width_cm / 2.54
+    scale_factor = target_width_inches / current_width_inches
+    current_fontsize = plt.rcParams["font.size"]
+    effective_fontsize = current_fontsize * scale_factor
+    if effective_fontsize < min_pt:
+        print(f"⚠️ 警告：縮放後字型大小約 {effective_fontsize:.1f}pt，低於最小值 {min_pt}pt")
+        print(f"   建議：將 font.size 提高至 {current_fontsize / scale_factor * min_pt / effective_fontsize:.0f}pt")
+    else:
+        print(f"✅ 字型大小符合要求（縮放後約 {effective_fontsize:.1f}pt）")
+```
+
+---
+
+## Step 9：品質確認清單（v2.0）
 
 - [ ] 圖表邏輯清晰，看圖能理解研究核心
-- [ ] 元素大小與字型符合學術出版標準
-- [ ] 顏色不超過 3 種（印刷版需考慮灰階辨識度）
+- [ ] 已選擇適當格式 Preset（臺灣論文 / APA / Nature）
+- [ ] 字型符合 Preset 規範（字體名稱、最小 pt 值）
+- [ ] 色彩選擇已考慮色盲友善性（建議 Okabe-Ito）
+- [ ] 顏色不超過 3-4 種（印刷版可在灰階下辨識）
 - [ ] 箭頭方向明確、無歧義
-- [ ] 有 APA 7th 格式的圖注
-- [ ] 高解析度輸出（≥ 300 DPI 印刷用，≥ 150 DPI 螢幕用）
+- [ ] 有 APA 7th 或目標期刊格式的圖注
+- [ ] 向量格式已匯出（PDF / EPS / SVG）
+- [ ] 解析度符合要求（印刷 ≥ 300 DPI；Nature 線稿 ≥ 1,000 DPI）
+- [ ] 圖表尺寸符合目標欄寬（單欄 / 雙欄 cm）
 - [ ] Excalidraw 版本可供後續編輯（若 MCP 可用）
