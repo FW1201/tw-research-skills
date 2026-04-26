@@ -86,25 +86,53 @@ npx skills update -a claude-code
 
 ### Codex CLI
 
-```bash
-npx skills add FW1201/tw-research-skills --all -a codex
+Codex 原生支援 MCP，透過 `~/.codex/config.toml` 設定 Connectors。
+
+**Skills 安裝路徑**：
+```
+<your-project>/.agents/skills/<skill-name>/SKILL.md
 ```
 
-> ⚠️ **Codex 限制**：
-> - `tw-research-stat-consultant` 的 **Bash 程式碼執行不可用**，僅能生成 Python/R 程式碼供複製執行
-> - MCP Connectors（Notion、GitHub、Hugging Face）**不可用**，文獻卡片需手動存檔
-> - `WebSearch`（用於 DOI 驗證、文獻搜尋）依連線狀態而定
-
-### Antigravity
-
 ```bash
-npx skills add FW1201/tw-research-skills --all -a antigravity
+git clone https://github.com/FW1201/tw-research-skills.git
+mkdir -p <your-project>/.agents/skills
+cp -r tw-research-skills/tw-research-*/ <your-project>/.agents/skills/
 ```
 
-> ⚠️ **Antigravity 限制**：
-> - `Bash` 程式碼執行需確認沙箱環境已啟用
-> - MCP Connectors 支援程度依個人環境設定而定
-> - Hugging Face 語料庫查詢需 HF API Token 設定
+**MCP 設定**（`~/.codex/config.toml`）：
+```toml
+[mcp_servers.consensus]
+url = "https://mcp.consensus.app/mcp"
+headers = { Authorization = "Bearer ${CONSENSUS_TOKEN}" }
+
+[mcp_servers.notion]
+command = "npx"
+args = ["-y", "@notionhq/notion-mcp-server"]
+env = { NOTION_API_KEY = "${NOTION_API_KEY}" }
+```
+
+> 詳細設定請參閱 [docs/non-claude-setup.md](docs/non-claude-setup.md)
+
+### Antigravity（Google AI IDE）
+
+Antigravity 完整支援 MCP + **Jupyter Notebook 原生整合**，是研究類 Skills 的最佳非 Claude 平台。
+
+**Skills 安裝路徑**：
+```
+~/.gemini/antigravity/skills/<skill-name>/SKILL.md   ← 全域層
+<project>/.agent/skills/<skill-name>/SKILL.md         ← 專案層
+```
+
+```bash
+mkdir -p ~/.gemini/antigravity/skills
+cp -r tw-research-skills/tw-research-*/ ~/.gemini/antigravity/skills/
+```
+
+**特有優勢**：`tw-research-stat-consultant` 可在 Jupyter Notebook 中直接執行 Python/R 統計分析，即時查看圖表輸出。
+
+**MCP 設定**：透過 MCP Server Hub 介面直接啟用 Consensus、Notion、Google Drive Connector。
+
+> 詳細設定請參閱 [docs/non-claude-setup.md](docs/non-claude-setup.md)
 
 ---
 
