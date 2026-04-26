@@ -310,12 +310,12 @@ Conceptual Framework of Teacher AI Competency and Student Learning Outcomes
 
 ## Step 6：MCP 整合對照表
 
-| 功能 | Claude Code | Claude.ai | Codex/gemini-cli |
-|------|------------|-----------|-----------------|
-| Excalidraw 互動圖 | ✅ MCP | ✅ MCP（若連接） | ❌ → SVG 輸出 |
-| 統計圖（matplotlib） | ✅ Bash | ✅ Bash | ✅ |
-| 匯出為 .png/.svg | ✅ | ✅ | ✅ |
-| Three.js 3D 視覺化 | ✅ MCP | ✅ MCP（若連接） | ❌ |
+| 功能 | Claude Code | Claude.ai | Codex | Antigravity |
+|------|------------|-----------|-------|------------|
+| Excalidraw 互動圖 | ✅ MCP | ✅ MCP（若連接） | ✅（需設定 config.toml）| ✅（MCP Hub）|
+| 統計圖（matplotlib） | ✅ Bash | ✅ Bash | ✅ | ✅ |
+| 匯出為 .png/.svg | ✅ | ✅ | ✅ | ✅ |
+| Three.js 3D 視覺化 | ✅ MCP | ✅ MCP（若連接） | ✅（需設定 config.toml）| ✅（MCP Hub）|
 
 ### Excalidraw MCP 未連接時的降級方案
 1. 使用 Python `matplotlib` 生成 `.png` 靜態圖表
