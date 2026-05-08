@@ -1,17 +1,17 @@
 # tw-research-skills — 學術研究 Claude Skills 套組
 
 > **臺灣學術研究者 / 碩博生專用 AI 研究輔助套組**  
-> 整合文獻管理、假說生成、統計分析（EDA / 網絡 / 時間序列）、引用格式校對、學術辯證，嚴謹對應臺灣學術規範，並支援國際期刊投稿模式。
+> 整合文獻管理、假說生成、統計分析（EDA / 網絡 / 時間序列）、引用格式校對、學術辯證、**投稿全流程支援（v2.5 新增）**，嚴謹對應臺灣學術規範，並支援國際期刊投稿模式。
 
-[![Skills](https://img.shields.io/badge/Skills-10-red)](https://github.com/FW1201/tw-research-skills)
-[![Version](https://img.shields.io/badge/Version-2.0-green)](https://github.com/FW1201/tw-research-skills)
+[![Skills](https://img.shields.io/badge/Skills-15-red)](https://github.com/FW1201/tw-research-skills)
+[![Version](https://img.shields.io/badge/Version-2.5-green)](https://github.com/FW1201/tw-research-skills)
 [![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
 ---
 
 ## 📦 套組概覽
 
-本套組包含 **10 個 Skills**，面向臺灣大學研究生、學術研究者，涵蓋：
+本套組包含 **15 個 Skills**（v2.0 原有 10 個 + v2.5 新增 5 個），面向臺灣大學研究生、學術研究者，涵蓋：
 - 假說生成與研究方法設計引導（競爭假說框架）
 - 系統性文獻探討（多資料庫搜尋策略）
 - 量化統計分析（Python/R 程式碼生成）+ EDA / 網絡分析 / 時間序列
@@ -19,6 +19,7 @@
 - 學術辯證 + ScholarEval 8 維度系統評估
 - 國科會 / NSF / NIH 研究計畫書撰寫
 - Publication-quality 圖表（色盲友善、期刊格式 preset）
+- **🆕 v2.5 投稿全流程支援**：期刊選擇顧問 / 投稿前檢查清單 / 審稿回覆撰寫 / 研究倫理自評 / 學位論文規範校對
 
 > **相關套組**：[tw-edu-skills（教師）](https://github.com/FW1201/tw-edu-skills) ｜ [tw-stu-skills（學生）](https://github.com/FW1201/tw-stu-skills)
 
@@ -58,6 +59,43 @@
 
 ---
 
+## 🆕 v2.5 新增：投稿全流程支援（2026-05）
+
+> 方案 C：本地化投稿流程優化（對標四大競品後優先實施）
+> 競品參考來源：academic-paper-skills / agent-research-skills / research-writing-skill / claude-prism
+
+### 投稿前流程
+
+```
+論文完成
+  ↓
+tw-research-citation-proofer（現有）— 引用格式校對
+  ↓
+tw-research-submission-checklist（新）— 投稿前 18 項檢查
+  ↓
+tw-research-journal-selector（新）— 期刊選擇 + 投稿信
+  ↓
+tw-research-ethics-reviewer（新）— 研究倫理自評（如適用）
+  ↓
+正式投稿
+  ↓
+tw-research-rebuttal-writer（新）— 審稿回覆撰寫
+  ↓
+tw-research-taiwan-regulation（新）— 學位論文繳交規範（碩博生）
+```
+
+### v2.5 新增 Skills 清單
+
+| Skill | 版本 | 功能說明 | 參考來源 |
+|-------|------|---------|--------|
+| `tw-research-journal-selector` | v1.0 🆕 | 期刊選擇顧問：TSSCI / SSCI / SCOPUS 三大資料庫對應 + Top 5 期刊建議 + 投稿信模板生成 | agent-research-skills (novelty-assessment) + academic-paper-skills |
+| `tw-research-submission-checklist` | v1.0 🆕 | 投稿前全面檢查：18 項清單（格式/內容/倫理/De-AI 品質）+ 投稿準備度評分 + 修正建議 | research-writing-skill (Red Flags system) |
+| `tw-research-rebuttal-writer` | v1.0 🆕 | 審稿回覆撰寫：R1/R2/R3 全輪次 + 意見自動分類（TYPE A-E）+ Point-by-Point 回應表 + 修訂追蹤 | agent-research-skills (rebuttal-writing) |
+| `tw-research-ethics-reviewer` | v1.0 🆕 | 研究倫理自評：IRB 風險矩陣（人體/動物/敏感資料）+ 知情同意書範本 + IRB 申請準備指引 | 台灣人體研究法 + Belmont Report |
+| `tw-research-taiwan-regulation` | v1.0 🆕 | 學位論文格式校對：各校封面格式 + 國家圖書館繳交規範 + 合規報告 + 電子檔製作指引 | 國家圖書館 ETD + 學位授予法 |
+
+---
+
 ## 🚀 安裝方式
 
 ### Claude Code（推薦）
@@ -65,7 +103,7 @@
 Claude Code 是本套組設計的**主要平台**，所有功能完整支援，包含程式碼執行。
 
 ```bash
-# 安裝全套組（8 個 Skills）
+# 安裝全套組（15 個 Skills，含 v2.5 新增）
 npx skills add FW1201/tw-research-skills --all -a claude-code
 
 # 安裝單一 Skill
