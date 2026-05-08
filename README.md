@@ -1,28 +1,84 @@
 # tw-research-skills — 學術研究 Claude Skills 套組
 
 > **臺灣學術研究者 / 碩博生專用 AI 研究輔助套組**  
-> 整合文獻管理、假說生成、統計分析（EDA / 網絡 / 時間序列）、引用格式校對、學術辯證、**投稿全流程支援（v2.5 新增）**，嚴謹對應臺灣學術規範，並支援國際期刊投稿模式。
+> 覆蓋研究全週期：研究規劃 → 文獻分析 → 統計/質性方法 → 論文寫作 → 投稿全流程，  
+> 嚴謹對應臺灣學術規範（TSSCI / 國科會 / 個資法 / 國圖學位論文），並支援國際期刊投稿模式。
 
-[![Skills](https://img.shields.io/badge/Skills-19-red)](https://github.com/FW1201/tw-research-skills)
-[![Version](https://img.shields.io/badge/Version-3.0-green)](https://github.com/FW1201/tw-research-skills)
+[![Skills](https://img.shields.io/badge/Skills-25-red)](https://github.com/FW1201/tw-research-skills)
+[![Version](https://img.shields.io/badge/Version-4.0-green)](https://github.com/FW1201/tw-research-skills)
 [![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
 ---
 
 ## 📦 套組概覽
 
-本套組包含 **19 個 Skills**（v2.0 原有 10 個 + v2.5 新增 5 個 + v3.0 新增 4 個），面向臺灣大學研究生、學術研究者，涵蓋：
-- 假說生成與研究方法設計引導（競爭假說框架）
-- 系統性文獻探討（多資料庫搜尋策略）
-- 量化統計分析（Python/R 程式碼生成）+ EDA / 網絡分析 / 時間序列
-- APA 7th / MLA 9th / 臺灣學位論文格式引用校對
-- 學術辯證 + ScholarEval 8 維度系統評估
-- 國科會 / NSF / NIH 研究計畫書撰寫
-- Publication-quality 圖表（色盲友善、期刊格式 preset）
-- **🆕 v2.5 投稿全流程支援**：期刊選擇顧問 / 投稿前檢查清單 / 審稿回覆撰寫 / 研究倫理自評 / 學位論文規範校對
-- **🆕 v3.0 論文寫作完整化**：段落改寫教練（三版本對照）/ 品質閘門（五維評分）/ 章節結構設計 / 摘要三層精縮
+本套組包含 **25 個 Skills**（v2.0 原有 10 個 + v2.5 新增 5 個 + v3.0 新增 4 個 + v4.0 新增 6 個），覆蓋台灣學術研究全週期：
+
+| 研究階段 | 涵蓋功能 | Skills 數 |
+|---------|---------|---------|
+| 📐 研究規劃 | 假說生成、雙菱形計畫書、研究計畫書（國科會/NSF/NIH） | 3 |
+| 🔬 方法設計 | **方法論決策樹**、實驗設計+功效分析、資料管理+個資法 | 3 🆕 |
+| 📚 文獻分析 | 系統性文獻探討、引用真偽查核、格式校對 | 3 |
+| 📊 資料分析 | 量化統計+EDA+網絡/時序分析、視覺化（期刊格式）| 2 |
+| 🧬 質性分析 | **質性編碼+主題分析**、**紮根理論三層編碼**、**內容分析+Kappa** | 3 🆕 |
+| ✍️ 論文寫作 | 章節結構設計、段落改寫教練、品質閘門（五維）、摘要精縮、學術辯證 | 5 |
+| 📬 投稿全程 | 期刊選擇顧問、投稿前18項檢查、審稿回覆、倫理自評、學位論文規範 | 5 |
+| ⚙️ 套組工具 | 個人化設定助手 | 1 |
 
 > **相關套組**：[tw-edu-skills（教師）](https://github.com/FW1201/tw-edu-skills) ｜ [tw-stu-skills（學生）](https://github.com/FW1201/tw-stu-skills)
+
+---
+
+## 🗺️ 完整研究週期流程圖（v4.0）
+
+```
+[研究構想]
+    │
+    ▼
+tw-research-synchronizer ─── 個人化設定
+    │
+    ▼
+tw-research-hypothesis-generator ─── 假說生成（競爭假說框架）
+    │
+    ▼
+tw-research-proposal-diamond ─────── 雙菱形研究計畫書
+tw-research-grant-writer ─────────── 國科會/NSF/NIH計畫書
+    │
+    ▼
+tw-research-methodology-designer ─── 方法論決策樹 ◀ v4.0新增
+    ├──────────────────────────────────────────────────┐
+    ▼（量化路線）                              ▼（質性路線）
+tw-research-stat-consultant           tw-research-qualitative-analyzer
+tw-research-experiment-planner ◀v4.0  tw-research-grounded-theory ◀v4.0
+tw-research-data-management ◀v4.0     tw-research-content-analysis ◀v4.0
+    └──────────────────────────────────────────────────┘
+    │
+    ▼
+tw-research-lit-review ──────────── 系統性文獻探討
+tw-research-citation-checker ─────── 文獻真偽查核
+    │
+    ▼
+tw-research-viz ─────────────────── 研究視覺化
+    │
+    ▼
+tw-research-structure-advisor ─────── 章節結構設計 ◀ v3.0新增
+tw-research-writing-coach ─────────── 段落三版本改寫 ◀ v3.0新增
+tw-research-quality-gate ─────────── 五維品質評分 ◀ v3.0新增
+tw-research-dialectics ─────────────── 學術辯證（ScholarEval 8維）
+tw-research-abstract-optimizer ─────── 摘要三層精縮 ◀ v3.0新增
+    │
+    ▼
+tw-research-citation-proofer ──────── 引用格式校對
+tw-research-submission-checklist ──── 投稿前18項檢查 ◀ v2.5新增
+tw-research-journal-selector ──────── 期刊選擇顧問 ◀ v2.5新增
+tw-research-ethics-reviewer ───────── 研究倫理自評 ◀ v2.5新增
+    │
+    ▼（投稿）
+tw-research-rebuttal-writer ───────── 審稿回覆撰寫 ◀ v2.5新增
+    │
+    ▼（學位論文繳交）
+tw-research-taiwan-regulation ─────── 學位論文規範 ◀ v2.5新增
+```
 
 ---
 
@@ -36,11 +92,25 @@
 | `tw-research-grant-writer` | v1.0 🆕 | 研究計畫書撰寫：國科會五段引導→三位評審視角模擬→引用驗證整合；支援切換 NSF / NIH 國際模式 |
 | `tw-research-lit-review` | v1.0 | 系統性文獻探討：Boolean 搜尋策略→多資料庫（Web of Science / Scopus / CNKI / NDLTD）→主題聚類→研究缺口識別→綜述草稿 |
 
+### 方法論設計（v4.0 新增）
+| Skill | 版本 | 功能說明 |
+|-------|------|---------|
+| `tw-research-methodology-designer` | v1.0 🆕 | 方法論決策樹：10 題問卷→量化/質性/混合推薦，作為整體方法論入口，銜接後續分析 Skills |
+| `tw-research-experiment-planner` | v1.0 🆕 | 實驗設計：G*Power 邏輯樣本數計算表、隨機化設計檢查、內在效度威脅分析、設計規劃書輸出 |
+| `tw-research-data-management` | v1.0 🆕 | 資料管理：四級敏感度分類、匿名化程序、台灣個資法合規清單、DMP 草稿、`.gitignore` 模板 |
+
 ### 資料分析
 | Skill | 版本 | 功能說明 |
 |-------|------|---------|
 | `tw-research-stat-consultant` | v2.0 ⬆️ | 量化統計顧問：上傳資料→選擇統計方法→Python/R 程式碼→效果量→學術解讀；**新增** EDA 自動分析（ydata-profiling）、網絡分析（networkx）、時間序列分析（statsmodels） |
 | `tw-research-viz` | v2.0 ⬆️ | 研究視覺化：數據圖表、概念架構圖、研究流程圖；**新增** 期刊格式 Preset（台灣論文/APA/Nature）、Okabe-Ito 色盲友善色系、300 DPI 向量輸出標準 |
+
+### 質性分析（v4.0 新增）
+| Skill | 版本 | 功能說明 |
+|-------|------|---------|
+| `tw-research-qualitative-analyzer` | v1.0 🆕 | 質性資料編碼：Braun & Clarke 六步驟主題分析、編碼矩陣、代表性引述提取、信度評估 |
+| `tw-research-grounded-theory` | v1.0 🆕 | 紮根理論：開放/軸心/選擇三層編碼工作流、典範模型（Paradigm Model）、理論飽和度評估 |
+| `tw-research-content-analysis` | v1.0 🆕 | 內容分析：編碼手冊設計、編碼矩陣、Cohen's Kappa 手算步驟+詮釋標準、頻率統計 |
 
 ### 引用管理
 | Skill | 版本 | 功能說明 |
@@ -131,6 +201,41 @@ tw-research-abstract-optimizer（新）— 摘要三層精縮 + 關鍵詞
 
 ---
 
+## 🆕 v4.0 新增：跨領域研究方法論擴展（2026-05）
+
+> 方案 B：質性分析 + 實驗設計 + 資料管理，完成量化→質性→混合的方法論全覆蓋  
+> 競品參考：agent-research-skills / Strauss & Corbin / Krippendorff / 台灣個資法
+
+### 方法論決策層架構
+
+```
+研究主題
+  ↓
+tw-research-methodology-designer（新）— 量化/質性/混合決策樹
+  ├─→ 量化研究路線
+  │     ├─→ tw-research-stat-consultant（現有）
+  │     └─→ tw-research-experiment-planner（新）— 功效分析 + 隨機化
+  ├─→ 質性研究路線
+  │     ├─→ tw-research-qualitative-analyzer（新）— 主題分析六步驟
+  │     └─→ tw-research-grounded-theory（新）— 三層編碼流程
+  └─→ 混合 / 文本分析
+        ├─→ tw-research-content-analysis（新）— 內容分析 + Kappa
+        └─→ tw-research-data-management（新）— 個資保護 + DMP
+```
+
+### v4.0 新增 Skills 清單
+
+| Skill | 版本 | 功能說明 | 參考來源 |
+|-------|------|---------|--------|
+| `tw-research-methodology-designer` | v1.0 🆕 | 方法論決策樹：10 題問卷 → 量化/質性/混合推薦 + 設計架構 + Skill 使用路徑 | agent-research-skills (research-planning) |
+| `tw-research-qualitative-analyzer` | v1.0 🆕 | 質性分析：Braun & Clarke 主題分析六步驟 + 編碼矩陣 + 代表性引述提取 + 信度評估 | agent-research-skills + 主題分析文獻 |
+| `tw-research-grounded-theory` | v1.0 🆕 | 紮根理論：開放/軸心/選擇三層編碼 + 典範模型 + 理論飽和度評估 | Strauss & Corbin (2015) |
+| `tw-research-experiment-planner` | v1.0 🆕 | 實驗設計：G*Power 邏輯樣本數計算 + 隨機化檢查清單 + 內在效度威脅分析 | agent-research-skills (experiment-design) |
+| `tw-research-data-management` | v1.0 🆕 | 資料管理：四級敏感度分類 + 匿名化程序 + 台灣個資法合規 + DMP 草稿 + `.gitignore` 模板 | 台灣個資法 + GDPR |
+| `tw-research-content-analysis` | v1.0 🆕 | 內容分析：編碼手冊設計 + 編碼矩陣 + Cohen's Kappa 計算（含手算步驟）+ 頻率統計 | Krippendorff (2019) |
+
+---
+
 ## 🚀 安裝方式
 
 ### Claude Code（推薦）
@@ -138,7 +243,7 @@ tw-research-abstract-optimizer（新）— 摘要三層精縮 + 關鍵詞
 Claude Code 是本套組設計的**主要平台**，所有功能完整支援，包含程式碼執行。
 
 ```bash
-# 安裝全套組（19 個 Skills，含 v2.5 + v3.0 新增）
+# 安裝全套組（25 個 Skills，含 v2.5 + v3.0 + v4.0 新增）
 npx skills add FW1201/tw-research-skills --all -a claude-code
 
 # 安裝單一 Skill
